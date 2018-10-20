@@ -27,10 +27,11 @@ xlabel('t(s)'), ylabel('sample x(n)')
 %Tijdelijk%
 F= [0 1/10 1/4 1/2 3/4 9/10 1 11/10 5/4 3/2 7/4 19/10 2];
 
-figure
+%figure
 for idx = 1:numel(F)
+    figure
     x = a * sin(2*pi*F(idx)*fs*t10);
-    subplot(4,4,idx);
+    %subplot(4,4,idx);
     xlabel('t(s)'), ylabel('sample x(n)')
     stem(t10,x,'b');
 end
