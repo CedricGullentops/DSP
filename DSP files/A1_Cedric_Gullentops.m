@@ -34,4 +34,3 @@ for idx = 1:numel(F)
     xlabel('t(s)'), ylabel('sample x(n)')
     stem(t10,x,'b');
 end
-set(gcf, 'Position', [100, 100, 1500, 1500])
