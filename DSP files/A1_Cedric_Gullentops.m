@@ -1,37 +1,48 @@
-%Definieren van de variabelen%
+%A1 - Cédric Gullentops
+%Sampling en Quantisatie
+%De onderstaande code toont een analoog signaal die digitaal gesampeld
+%word en de effecten van undersampling. (Aliasing)
+
+%Definitie van de variabelen:
+%Golfwaarden:
 a=5;
 b=10;
 p=1000;
 q=1500;
+%Samplefrequentie:
 r=10000;
-n=32;
-fs=r;
-Ts = 1/fs;
-t = (0:(n-1))*Ts;
+%Aantal samples:
+n=32;       
+%Berekende waarden:
+fs = r;          
+Ts = 1/fs;      
+T = (n-1)*Ts;    
+t = 0:1/fs:T;
 
-%Grafische voorstelling van de continue en gesampelde golven%
-figure
+%Golf:
 x = a * sin(2*pi*p*t)+b*sin(2*pi*q*t);
-subplot(2,1,1);
-stem(t,x,'k');
+
+%Grafische voorstelling van de continue en gesampelde golven.
+hold on
+stem(t,x);
 title('Grafische voorstelling sampling en quantisatie');
 xlabel('t(s)'), ylabel('sample x(n)')
 
-t10 = (0: (n*10-1))*(Ts/10);
+%10 keer meer samples.
+t10 = 0:1/(10*fs):T;                            
 x10 = a * sin(2*pi*p*t10)+b*sin(2*pi*q*t10);
 
-subplot(2,1,2);
-plot(t10,x10,'b');
-xlabel('t(s)'), ylabel('sample x(n)')
+stem(t,x);
+plot(t10,x10);
+hold off
 
-%Tijdelijk%
+%Verschillende situaties:
 F= [0 1/10 1/4 1/2 3/4 9/10 1 11/10 5/4 3/2 7/4 19/10 2];
 
-%figure
+%Figuren van de voorgaande situaties:
 for idx = 1:numel(F)
     figure
-    x = a * sin(2*pi*F(idx)*fs*t10);
-    %subplot(4,4,idx);
+    x = a * sin(2*pi*F(idx)*fs*t);
     xlabel('t(s)'), ylabel('sample x(n)')
-    stem(t10,x,'b');
+    stem(t,x);
 end

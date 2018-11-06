@@ -1,0 +1,33 @@
+%A3 - Cédric Gullentops
+%Fast Fourier Transform
+%De onderstaande code toont de effecten van sampling op frequentiespectrum
+%van een golfvorm in het continue tijdsdomein.
+
+%Definitie van de variabelen:
+%Golfwaarden:
+a= 2;
+p= 500;
+
+%Samplefrequentie:
+r= 4000;
+
+%Aantal samples:
+n= 64;
+
+%Berekende waarden:
+fs = r               
+Ts = 1/fs              
+t = 0:1/fs:(Ts*(n-1)) 
+freq = (0:(n-1))*fs/n
+fshift = freq - fs/2
+
+%Golf:
+x = a*cos(2*pi*p*t)
+
+%Grafiek:
+stem(t,x);
+
+%FFT:
+stem(freq,abs(fft(x)));
+
+%FFT
