@@ -1,0 +1,8 @@
+We kunnen opmerken dat dit een IIR filter is omdat er zich een feedback loop bevindt.
+
+De limietwaarde van de DC versterking voor de verschillende a factoren bedraagt:
+a1[0.1] = 1/(1-0.1) = 1.111111
+a1[0.5] = 1/(1-0.5) = 2
+a1[0.9] = 1/(1-0.9) = 10
+a1[1.0] = 1/(1-1.0) = inf
+a1[1.1] = 1/(1-1.1) = inf
